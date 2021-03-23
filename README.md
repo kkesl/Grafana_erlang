@@ -1,5 +1,10 @@
-# Grafana_erlang
+# elogger_demo
 
-Grafana promtail image, with erlang installed.
+Ejson logger formatter Demo.
 
-```docker-compose -f docker-compose.yaml up```
+Writes erlang logs as json files to be consumed by promtail
+
+```
+docker build -t hackathon/promtail:1.0.3 .
+docker-compose -f docker-compose.yaml up
+```

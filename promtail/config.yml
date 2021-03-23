@@ -9,10 +9,17 @@ clients:
   - url: http://loki:3100/loki/api/v1/push
 
 scrape_configs:
-- job_name: system
-  static_configs:
-  - targets:
-      - localhost
-    labels:
-      job: varlogs
-      __path__: /var/log/*log
+  - job_name: test
+    static_configs:
+      - labels:
+          __path__ : /tmp/json.log
+    pipeline_stages:
+      - json:
+          expressions:
+            time: time
+            level: level
+      - labels:
+          level:
+      - timestamp:
+          source: time
+          format: RFC3339Nano
