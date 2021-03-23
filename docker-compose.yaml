@@ -13,7 +13,7 @@ services:
       - loki
 
   promtail:
-    image: hackathon/promtail:1.0.3
+    image: hackathon/promtail:1.0.4
     ports:
       - "9080:9080"
     volumes:
@@ -21,6 +21,8 @@ services:
     command: -config.file=/etc/promtail/config.yml
     networks:
       - loki
+    hostname:
+      promtail.is.fun
 
   grafana:
     image: grafana/grafana:latest
